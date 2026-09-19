@@ -1,0 +1,22 @@
+fastapi
+uvicorn
+gradio>=5.0.0
+spaces
+python-jose[cryptography]
+passlib[bcrypt]
+python-multipart
+python-dotenv
+aiofiles
+numpy
+Pillow
+motor
+pymongo
+dnspython
+SimpleITK
+nibabel
+reportlab
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+torchvision
+email-validator
+bcrypt==4.0.1

@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════════════════
+   NEUROASSIST — Clinical AI Diagnostic Platform (Hospital-Grade Design)
+   Palette: Warm Cream (#FAF6F3) · Burgundy (#7A1F2B) · Slate (#5B7C99)
+   Charcoal Text (#22201F) · White Cards with Hairline Borders
+═══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --bg-cream: #FAF6F3;
+  --bg-cream-soft: #F7F1EC;
+  --bg-cream-card: #FFFFFF;
+  --border-hairline: #E8E2DA;
+  --border-subtle: #EDE7E0;
+  
+  --maroon-primary: #7A1F2B;
+  --maroon-dark: #5E1620;
+  --maroon-light: #F8EAED;
+  --maroon-border: #ECC8CF;
+
+  --slate-primary: #5B7C99;
+  --slate-light: #E8EFF5;
+  
+  --text-charcoal: #22201F;
+  --text-secondary: #7A756F;
+  --text-tertiary: #A39E98;
+
+  --sage-text: #2E523A;
+  --sage-bg: #EDF5F0;
+  --sage-border: #CFE3D5;
+
+  --amber-text: #8A5A14;
+  --amber-bg: #FAF3E8;
+  --amber-border: #F0DEC2;
+}
+
+/* ── Base Reset ──────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-cream);
+  color: var(--text-charcoal);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-cream);
+  color: var(--text-charcoal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Editorial Headings ──────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: 'Fraunces', 'Newsreader', Georgia, serif;
+  color: var(--text-charcoal);
+  letter-spacing: -0.015em;
+}
+
+/* ── Subtle Scrollbar ────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF6F3;
+}
+::-webkit-scrollbar-thumb {
+  background: #D8C9BC;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B8A89A;
+}
+
+/* ── Clinical Custom Classes ─────────────────────────────────────── */
+@layer components {
+  /* White card with hairline border & calm elevation */
+  .clinical-card {
+    @apply bg-white border border-[#E8E2DA] rounded-[14px] shadow-clinical transition-all duration-200;
+  }
+  .clinical-card-hover {
+    @apply clinical-card hover:shadow-clinical-hover hover:border-[#D5CDC3];
+  }
+
+  /* Editorial Brand Header */
+  .brand-title {
+    font-family: 'Fraunces', Georgia, serif;
+    letter-spacing: 0.04em;
+  }
+  .brand-title .brand-bold {
+    color: #7A1F2B;
+    font-weight: 800;
+  }
+  .brand-title .brand-regular {
+    color: #22201F;
+    font-weight: 400;
+  }
+
+  /* Primary Maroon Clinical Button */
+  .btn-maroon {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-white transition-all duration-150;
+    background-color: #7A1F2B;
+  }
+  .btn-maroon:hover {
+    background-color: #661823;
+  }
+  .btn-maroon:active {
+    transform: translateY(1px);
+  }
+
+  /* Secondary Neutral Button */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-[#22201F] bg-white border border-[#E8E2DA] transition-all duration-150;
+  }
+  .btn-outline:hover {
+    @apply bg-[#F7F1EC] border-[#D5CDC3];
+  }
+  .btn-outline:active {
+    transform: translateY(1px);
+  }
+
+  /* Clean Input Field */
+  .clinical-input {
+    @apply w-full px-3.5 py-2.5 text-sm bg-white border border-[#E8E2DA] rounded-xl text-[#22201F] placeholder-[#A39E98] outline-none transition-all duration-150;
+  }
+  .clinical-input:focus {
+    @apply border-[#7A1F2B] ring-2 ring-[#7A1F2B]/10;
+  }
+
+  /* Status Badges */
+  .badge-cn {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#EDF5F0] text-[#2E523A] border border-[#CFE3D5];
+  }
+  .badge-mci {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#FAF3E8] text-[#8A5A14] border border-[#F0DEC2];
+  }
+  .badge-ad {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#F8EAED] text-[#7A1F2B] border border-[#ECC8CF];
+  }
+  .badge-neutral {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#F4F7FA] text-[#5B7C99] border border-[#CFDEEB];
+  }
+
+  /* Micro Skeleton loader */
+  .clinical-skeleton {
+    background: linear-gradient(90deg, #F0E8E1 25%, #FAF6F3 50%, #F0E8E1 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.6s infinite ease-in-out;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
